@@ -5,6 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+/**
+ * @author Ashwani kumar dwivedi
+ */
+
 public class TaskGraph {
 
     public int num_of_tasks,num_of_processors;
@@ -16,6 +20,9 @@ public class TaskGraph {
     public LinkedList<Integer> start_tasks;
     public LinkedList<Integer> exit_tasks;
     Scanner scan;
+
+    public double task_heterogenity,machine_heterogenity;
+    public double CCR;
 
     public TaskGraph(File file,boolean normal){
         try {
@@ -29,6 +36,84 @@ public class TaskGraph {
         }catch (FileNotFoundException e){
             System.out.println("File not found");
         }
+    }
+
+    public void analyse(){
+        // calculating machine heterogenity
+        calculateHeterogenity();
+        calculateCCR();
+    }
+
+    void calculateCCR(){
+        double computation=0,communication=0;
+        double count=0;
+        for(int i=0;i<num_of_tasks;i++){
+            computation+=avg(cost[i]);
+        }
+        computation/=num_of_tasks-start_tasks.size()-exit_tasks.size()+2;
+        for(int i=0;i<num_of_tasks;i++){
+            for(int j=0;j<num_of_tasks;j++){
+                if(adj_mat[i][j]!=-1){
+                    communication+=adj_mat[i][j];
+                    count++;
+                }
+            }
+        }
+        communication/=count;
+        CCR = communication/computation;
+    }
+
+    double avg(double[] array){
+        double sum=0;
+        for(int i=0;i<array.length;i++){
+            sum+=array[i];
+        }
+        sum/=array.length;
+        return sum;
+    }
+
+    void calculateHeterogenity(){
+        machine_heterogenity=0;
+        double mean,var,temp,var1=0,mean1=0;
+        int count = num_of_tasks;
+        for(int i=0;i<num_of_tasks;i++){
+            mean=0;
+            for(int j=0;j<num_of_processors;j++){
+                mean+=cost[i][j];
+            }
+            mean/=num_of_processors;
+            var=0;
+            for(int j=0;j<num_of_processors;j++) {
+                temp = cost[i][j] - mean;
+                var += temp * temp;
+            }
+            var/=num_of_processors;
+
+            var = Math.sqrt(var);
+            if(mean>0)
+                machine_heterogenity = machine_heterogenity + (var/mean);
+            else count--;
+        }
+        machine_heterogenity/=count;
+
+        task_heterogenity = 0;
+        for(int i=0;i<num_of_processors;i++){
+            mean=0;
+            for(int j=0;j<num_of_tasks;j++){
+                mean+=cost[j][i];
+            }
+            mean/=num_of_tasks;
+            var=0;
+            for(int j=0;j<num_of_tasks;j++){
+                temp = cost[j][i]-mean;
+                var+=temp*temp;
+            }
+            var/=num_of_tasks;
+            var = Math.sqrt(var);
+            if(mean>0)
+                task_heterogenity = task_heterogenity + var/mean;
+        }
+        task_heterogenity/=num_of_processors;
     }
 
     void readinput(){
