@@ -2,6 +2,10 @@ package HEFT;
 
 import DAG.TaskGraph;
 
+/**
+ * @author ashwani kumar dwivedi
+ */
+
 public class Algorithm {
     TaskGraph data;
     public double up_rank[];
