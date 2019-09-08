@@ -1,5 +1,7 @@
 package RandomGraphGenerator;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -44,7 +46,7 @@ public class FFT {
         printmatrix(matrix);
     }
 
-    public static void printmatrix(double[][] matrix){
+    public static void printmatrix(@NotNull double[][] matrix){
         for(int i=0;i<matrix.length;i++){
             System.out.print(i+1+ " => ");
             for(int j=0;j<matrix[i].length;j++){
@@ -87,7 +89,7 @@ public class FFT {
                 list.add(temp);
                 nodes.add(temp);
             }
-            int step = powerof2(size);
+            int step = size/2;
             for(int i=0;i<leftchilds.size();i++){
                 temp = leftchilds.get(i);
                 temp.connections.add(new Connection(list.get(i),edge_weight));
