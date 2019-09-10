@@ -22,6 +22,9 @@ public class ETCMatrixGenerator {
         this.task_var = task_var;
         this.machine_var = machine_var;
     }
+    ETCMatrixGenerator(){
+
+    }
 
     void calculateParameters(){
         alpha_task = 1/Math.pow(task_var,2);
@@ -98,6 +101,7 @@ public class ETCMatrixGenerator {
     void calculateMatrix1(){
         calculateParameters();
         double s,beta_machine;
+        //System.out.println(alpha_task+" "+beta_task);
         gamma1 = new GammaDistribution(alpha_task,beta_task);
         ETC = new double[num_of_tasks][num_of_machines];
         for(int i=0;i<num_of_tasks;i++){

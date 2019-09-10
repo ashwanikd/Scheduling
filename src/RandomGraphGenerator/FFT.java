@@ -11,6 +11,7 @@ import java.util.LinkedList;
  */
 public class FFT {
     double communication;
+    double avg_comm;
     LinkedList<Node> nodes;
     int num_of_points;
     double edge_weight;
@@ -66,14 +67,17 @@ public class FFT {
         Node temp;
         Connection temp2;
         Iterator it2;
+        total_communication = 0;
         for(int i=0;i<nodes.size();i++){
             temp = (Node)it1.next();
             it2 = temp.connections.iterator();
             while(it2.hasNext()){
                 temp2 = (Connection) it2.next();
                 matrix[temp.name][temp2.node.name] = temp2.dist;
+                total_communication+=temp2.dist;
             }
         }
+        avg_comm = total_communication/num_of_links;
     }
 
     public static void printmatrix(@NotNull double[][] matrix){
