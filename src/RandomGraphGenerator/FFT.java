@@ -1,7 +1,6 @@
 package RandomGraphGenerator;
 
 import org.apache.commons.math3.distribution.GammaDistribution;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -80,7 +79,7 @@ public class FFT {
         avg_comm = total_communication/num_of_links;
     }
 
-    public static void printmatrix(@NotNull double[][] matrix){
+    public static void printmatrix(double[][] matrix){
         for(int i=0;i<matrix.length;i++){
             System.out.print(i+1+ " => ");
             for(int j=0;j<matrix[i].length;j++){

@@ -2,7 +2,6 @@ package RandomGraphGenerator;
 
 
 import org.apache.commons.math3.distribution.GammaDistribution;
-import org.jetbrains.annotations.NotNull;
 
 public class ETCMatrixGenerator {
 
@@ -129,7 +128,7 @@ public class ETCMatrixGenerator {
         }
     }
 
-    public static void printmatrix(@NotNull double[][] matrix){
+    public static void printmatrix(double[][] matrix){
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[i].length;j++){
                 //if(matrix[i][j] != -1 )

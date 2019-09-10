@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38ad31e7-6cac-462c-86d2-8df09b6c651e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/CPOP/Algorithm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RandomGraphGenerator/FFTGraphGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RandomGraphGenerator/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NewMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NewMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RandomGraphGenerator/ETCMatrixGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RandomGraphGenerator/ETCMatrixGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RandomGraphGenerator/FFT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RandomGraphGenerator/FFT.java" afterDir="false" />
     </list>
@@ -22,14 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="225">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RandomGraphGenerator/FFT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="2" column="63" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -37,20 +30,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RandomGraphGenerator/ETCMatrixGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1466">
-              <caret line="103" column="10" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="983">
+              <caret line="122" column="37" lean-forward="true" selection-start-line="122" selection-start-column="37" selection-end-line="122" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RandomGraphGenerator/FFTGraphGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+            <state relative-caret-position="-1290">
+              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -97,11 +87,11 @@
         <option value="$PROJECT_DIR$/src/SufferageAlgorithm/Algorithm.java" />
         <option value="$PROJECT_DIR$/src/HEFT/Algorithm.java" />
         <option value="$PROJECT_DIR$/src/RandomGraphGenerator/Main.java" />
-        <option value="$PROJECT_DIR$/src/RandomGraphGenerator/FFT.java" />
         <option value="$PROJECT_DIR$/DataSet/FFT/1.txt" />
         <option value="$PROJECT_DIR$/src/NewMain.java" />
-        <option value="$PROJECT_DIR$/src/RandomGraphGenerator/ETCMatrixGenerator.java" />
         <option value="$PROJECT_DIR$/src/RandomGraphGenerator/FFTGraphGenerator.java" />
+        <option value="$PROJECT_DIR$/src/RandomGraphGenerator/ETCMatrixGenerator.java" />
+        <option value="$PROJECT_DIR$/src/RandomGraphGenerator/FFT.java" />
       </list>
     </option>
   </component>
@@ -133,24 +123,7 @@
             <path>
               <item name="Scheduling" type="b2602c69:ProjectViewProjectNode" />
               <item name="Scheduling" type="462c0819:PsiDirectoryNode" />
-              <item name="DataSet" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Scheduling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scheduling" type="462c0819:PsiDirectoryNode" />
-              <item name="DataSet" type="462c0819:PsiDirectoryNode" />
-              <item name="FFT" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Scheduling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scheduling" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Scheduling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scheduling" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DAG" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Scheduling" type="b2602c69:ProjectViewProjectNode" />
@@ -176,6 +149,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -308,10 +282,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1366" height="745" extended-state="6" />
+    <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25768667" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2621212" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -431,16 +405,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SufferageAlgorithm/Algorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SufferageAlgorithm/Algorithm.java" />
     <entry file="file://$PROJECT_DIR$/src/CPOP/Algorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -546,30 +511,24 @@
     <entry file="file://$PROJECT_DIR$/DataSet/FFT/3481.txt" />
     <entry file="file://$PROJECT_DIR$/DataSet/FFT/3454.txt" />
     <entry file="file://$PROJECT_DIR$/DataSet/FFT/2/1.txt" />
+    <entry file="file://$PROJECT_DIR$/src/RandomGraphGenerator/FFTGraphGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1290">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RandomGraphGenerator/ETCMatrixGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1466">
-          <caret line="103" column="10" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="983">
+          <caret line="122" column="37" lean-forward="true" selection-start-line="122" selection-start-column="37" selection-end-line="122" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RandomGraphGenerator/FFT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RandomGraphGenerator/FFTGraphGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+        <state relative-caret-position="15">
+          <caret line="2" column="63" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -629,7 +588,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
