@@ -1,4 +1,4 @@
-package HEFT;
+package HEFT2;
 
 import DAG.TaskGraph;
 
@@ -28,6 +28,7 @@ public class Algorithm {
         setavgwork();
         setrank = new boolean[data.num_of_tasks];
         setupwardrank(data.starttask);
+        //setuprank2();
         setrank = new boolean[data.num_of_tasks];
         setdownwardrank(data.exit_task);
         order = new int[data.num_of_tasks];
@@ -35,6 +36,25 @@ public class Algorithm {
         EFT = new double[data.num_of_tasks];
         assignment = new int[data.num_of_tasks];
         assigned = new boolean[data.num_of_tasks];
+    }
+
+    public void setuprank2(){
+        double cmax,tmax;
+        for(int i=0;i<up_rank.length;i++){
+            cmax = -1;
+            for(int j=0;j<data.adj_mat[i].length;j++){
+                if(data.adj_mat[j][i]>cmax){
+                    cmax = data.adj_mat[j][i];
+                }
+            }
+            tmax = -1;
+            for(int j=0;j<data.cost[i].length;j++){
+                if(data.cost[i][j]>tmax){
+                    tmax = data.cost[i][j];
+                }
+            }
+            up_rank[i] = up_rank[i]*cmax/tmax;
+        }
     }
 
     public void schedule(){

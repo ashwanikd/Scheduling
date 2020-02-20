@@ -8,6 +8,7 @@ import java.util.LinkedList;
 /**
  * @author ashwani kumar dwivdei
  */
+
 public class FFT {
     double communication;
     double avg_comm;
@@ -29,8 +30,15 @@ public class FFT {
 
     GammaDistribution gamma;
 
+    /**
+     * generates a DAG by FFT algorithm based on input parameters
+     * @param state DAG property will be decided by the state
+     * @param num_of_points number of points in initial array
+     * @param edge_weight the amount of communication cost needed in the graph
+     */
     void generateGraph(int state,int num_of_points,double edge_weight){
         this.state = state;
+        this.num_of_links=0;
         nodes = new LinkedList<>();
         nodes.add(new Node(0));
         this.num_of_points = num_of_points;
@@ -40,8 +48,16 @@ public class FFT {
         num_of_nodes++;
     }
 
+    /**
+     * generates a DAG by FFT algorithm based on input parameters
+     * @param state DAG property will be decided by the state
+     * @param num_of_points number of points in initial array
+     * @param edge_weight the amount of communication cost needed in the graph
+     * @param var amount of variance needed in the communication costs
+     */
     void generateGraph(int state,int num_of_points,double edge_weight, double var){
         this.state = 2;
+        this.num_of_links=0;
         double m = 1/Math.pow(var,2);
         gamma = new GammaDistribution(m,edge_weight/var);
         nodes = new LinkedList<>();
@@ -55,6 +71,9 @@ public class FFT {
 
     double[][] matrix;
 
+    /**
+     * generates the adjacency matrix from current graph
+     */
     void generateMatrix(){
         matrix = new double[nodes.size()][nodes.size()];
         for(int i=0;i<matrix.length;i++){
@@ -79,6 +98,10 @@ public class FFT {
         avg_comm = total_communication/num_of_links;
     }
 
+    /**
+     * prints the passed matrix
+     * @param matrix
+     */
     public static void printmatrix(double[][] matrix){
         for(int i=0;i<matrix.length;i++){
             System.out.print(i+1+ " => ");
@@ -90,6 +113,13 @@ public class FFT {
         }
     }
 
+    /**
+     * FFT Graph Generation code
+     * @param node the initial graph node
+     * @param size the size of initial array
+     * @param s theoritical size of initial array
+     * @return a list of nodes at last level of FFT graph
+     */
     LinkedList<Node> fft(Node node, int size, double s){
         int c = 60;
         if(size == 1){

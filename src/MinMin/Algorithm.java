@@ -1,9 +1,13 @@
-package CPOP;
+package MinMin;
 
 
 import DAG.TaskGraph;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-import java.util.*;
+/**
+ * @author ashwani kumar dwivedi
+ */
 
 public class Algorithm {
     TaskGraph data;
@@ -12,15 +16,15 @@ public class Algorithm {
     double finishtime[];
     int assignment[];
     int taskassignment[];
+    LinkedList<Integer> meta_task;
     double[][] c;
     boolean proc_avail[];
     public double load_balance;
-    LinkedList<Integer> meta_task;
 
     public Algorithm(TaskGraph data){
         this.data = data;
-        meta_task = new LinkedList<>();
         avail = new double[data.num_of_processors];
+        meta_task = new LinkedList<>();
         scheduled = new boolean[data.num_of_tasks];
         finishtime = new double[data.num_of_tasks];
         assignment = new int[data.num_of_processors];
@@ -40,6 +44,8 @@ public class Algorithm {
         return max;
     }
 
+    public double resource_utilization;
+
     public void calculate_load_balance(){
         load_balance = 0;
         double comp[] = new double[data.num_of_processors];
@@ -52,6 +58,7 @@ public class Algorithm {
             avg+=comp[i];
         }
         avg = avg/comp.length;
+        resource_utilization = avg/schedulelength();
 
         for(int i=0;i<comp.length;i++){
             load_balance+=Math.pow(avg-comp[i],2);
@@ -61,70 +68,7 @@ public class Algorithm {
 
     public void schedule(){
         try{
-            boolean check;
-            Iterator it;
-            int t,task=0,proc_of_task=0;
-            double min;
-            while(meta_task.size()!=0){
-                it = meta_task.listIterator();
-                // make c matrix
-                while(it.hasNext()){
-                    t = (int)it.next();
-                    for(int i=0;i<data.num_of_processors;i++){
-                        c[t][i] = EFT(t,i);
-                    }
-                }
 
-                while (meta_task.size() != 0){
-                    min = Double.MAX_VALUE;
-                    it = meta_task.listIterator();
-                    while(it.hasNext()){
-                        t = (int)it.next();
-                        for(int i=0;i<data.num_of_processors;i++) {
-                            if (c[t][i] < min) {
-                                min = c[t][i];
-                                proc_of_task = i;
-                                task = t;
-                            }
-                        }
-                    }
-                    finishtime[task] = c[task][proc_of_task];
-                    taskassignment[task] = proc_of_task;
-                    avail[proc_of_task] = c[task][proc_of_task];
-                    scheduled[task] = true;
-                    assignment[proc_of_task] = task;
-                    meta_task.remove(Integer.valueOf(task));
-
-                    // update c matrix
-                    it = meta_task.listIterator();
-                    while(it.hasNext()){
-                        t = (int)it.next();
-                        for(int i=0;i<data.num_of_processors;i++){
-                            c[t][i] = EFT(t,i);
-                        }
-                    }
-                }
-                //System.out.println();
-
-                // adding successors
-
-                for(int i=0;i<data.adj_mat.length;i++){
-                    if(scheduled[i])
-                        continue;
-                    check = true;
-                    for(int j=0;j<data.adj_mat[i].length;j++){
-                        if(data.adj_mat[j][i]!=-1){
-                            if(!scheduled[j]){
-                               check = false;
-                               break;
-                            }
-                        }
-                    }
-                    if(check){
-                        meta_task.add(i);
-                    }
-                }
-            }
 
             calculate_load_balance();
         }catch (Exception e){
@@ -165,3 +109,4 @@ public class Algorithm {
         }
     }
 }
+

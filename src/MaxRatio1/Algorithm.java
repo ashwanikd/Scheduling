@@ -1,9 +1,12 @@
-package CPOP;
-
+package MaxRatio1;
 
 import DAG.TaskGraph;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-import java.util.*;
+/**
+ * @author ashwani kumar dwivedi
+ */
 
 public class Algorithm {
     TaskGraph data;
@@ -13,6 +16,9 @@ public class Algorithm {
     int assignment[];
     int taskassignment[];
     double[][] c;
+    double[][] d;
+    double[] tmax;
+    double[] cmax;
     boolean proc_avail[];
     public double load_balance;
     LinkedList<Integer> meta_task;
@@ -25,9 +31,26 @@ public class Algorithm {
         finishtime = new double[data.num_of_tasks];
         assignment = new int[data.num_of_processors];
         c = new double[data.num_of_tasks][data.num_of_processors];
+        d = new double[data.num_of_tasks][data.num_of_processors];
+        tmax = new double[data.num_of_tasks];
+        cmax = new double[data.num_of_tasks];
+        setTmaxCmax();
         proc_avail = new boolean[data.num_of_processors];
         taskassignment = new int[data.num_of_tasks];
         meta_task.add(data.starttask);
+    }
+
+    void setTmaxCmax(){
+        for(int i=0;i<data.num_of_tasks;i++){
+            tmax[i] = maximum(data.cost[i]);
+        }
+        for(int t=0;t<data.num_of_tasks;t++){
+            for(int i=0;i<data.num_of_tasks;i++){
+                if(data.adj_mat[i][t]>cmax[t]){
+                    cmax[t] = data.adj_mat[i][t];
+                }
+            }
+        }
     }
 
     public double schedulelength(){
@@ -39,6 +62,8 @@ public class Algorithm {
         }
         return max;
     }
+
+    public double resource_utilization;
 
     public void calculate_load_balance(){
         load_balance = 0;
@@ -52,6 +77,7 @@ public class Algorithm {
             avg+=comp[i];
         }
         avg = avg/comp.length;
+        resource_utilization = avg/schedulelength();
 
         for(int i=0;i<comp.length;i++){
             load_balance+=Math.pow(avg-comp[i],2);
@@ -81,10 +107,18 @@ public class Algorithm {
                     while(it.hasNext()){
                         t = (int)it.next();
                         for(int i=0;i<data.num_of_processors;i++) {
-                            if (c[t][i] < min) {
-                                min = c[t][i];
-                                proc_of_task = i;
-                                task = t;
+                            if(cmax[t]>0) {
+                                if (c[t][i] * cmax[t] / tmax[t] < min) {
+                                    min = c[t][i] * cmax[t] / tmax[t];
+                                    proc_of_task = i;
+                                    task = t;
+                                }
+                            }else {
+                                if (c[t][i] < min) {
+                                    min = c[t][i];
+                                    proc_of_task = i;
+                                    task = t;
+                                }
                             }
                         }
                     }
@@ -104,7 +138,6 @@ public class Algorithm {
                         }
                     }
                 }
-                //System.out.println();
 
                 // adding successors
 
@@ -115,8 +148,8 @@ public class Algorithm {
                     for(int j=0;j<data.adj_mat[i].length;j++){
                         if(data.adj_mat[j][i]!=-1){
                             if(!scheduled[j]){
-                               check = false;
-                               break;
+                                check = false;
+                                break;
                             }
                         }
                     }
@@ -157,6 +190,16 @@ public class Algorithm {
             return b;
         else
             return a;
+    }
+
+    double maximum(double[] array){
+        double max = Double.MIN_VALUE;
+        for(int i=0;i<array.length;i++){
+            if(array[i]>max){
+                max = array[i];
+            }
+        }
+        return max;
     }
 
     class IllegalAssignmentException extends Exception{

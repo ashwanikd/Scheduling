@@ -128,5 +128,6 @@ public class AnalyseData {
         System.out.println("Machine heterogineity : "+graph.machine_heterogenity);
         System.out.println("Task heterogineity : "+graph.task_heterogenity);
         System.out.println("CCR : "+graph.CCR);
+        System.out.println("start task : "+graph.starttask);
     }
 }

@@ -146,6 +146,22 @@ public class TaskGraph {
         }
     }
 
+    public double sequentialExecution;
+    public void set_Sequential_Execution(){
+        double[] result = new double[num_of_processors];
+        for(int i=0;i<num_of_processors;i++){
+            for(int j=0;j<num_of_tasks;j++){
+                result[i]+=cost[j][i];
+            }
+        }
+        sequentialExecution = Double.MAX_VALUE;
+        for(int i=0;i<result.length;i++){
+            if(result[i]<sequentialExecution){
+                sequentialExecution = result[i];
+            }
+        }
+    }
+
     void readinput1(){
         try{
             num_of_tasks = scan.nextInt();
@@ -173,7 +189,7 @@ public class TaskGraph {
                     if(temp==0)
                         adj_mat[i][j] = -1;
                     else
-                        adj_mat[i][j] = 1;
+                        adj_mat[i][j] = 0;
                 }
             }
             set_start_tasks();

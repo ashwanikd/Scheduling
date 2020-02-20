@@ -1,8 +1,14 @@
 package RandomGraphGenerator;
 
+/**
+ * @author ashwani kumar dwivedi
+ */
 
 import org.apache.commons.math3.distribution.GammaDistribution;
 
+/**
+ * An ETC(Execution Time Cost) matrix generator
+ */
 public class ETCMatrixGenerator {
 
     double machine_heterogeneity,task_heterogeneity;
@@ -14,6 +20,14 @@ public class ETCMatrixGenerator {
 
     double alpha_task,alpha_machine,beta_task,beta_machine;
 
+    /**
+     * default constructor
+     * @param num_of_tasks number of tasks
+     * @param num_of_machines number of processors
+     * @param task_mean mean of the task costs
+     * @param task_var coefficient of variance or task heterogenity
+     * @param machine_var coefficient of variance or machine heterogenity
+     */
     ETCMatrixGenerator(int num_of_tasks,int num_of_machines,double task_mean,double task_var,double machine_var){
         this.num_of_tasks = num_of_tasks;
         this.num_of_machines = num_of_machines;
@@ -21,10 +35,17 @@ public class ETCMatrixGenerator {
         this.task_var = task_var;
         this.machine_var = machine_var;
     }
+
+    /**
+     * default constructor
+     */
     ETCMatrixGenerator(){
 
     }
 
+    /**
+     * initialises initial parameters for gamma distribution
+     */
     void calculateParameters(){
         alpha_task = 1/Math.pow(task_var,2);
         beta_task = task_mean/alpha_task;
@@ -32,6 +53,9 @@ public class ETCMatrixGenerator {
         beta_machine = task_mean/alpha_machine;
     }
 
+    /**
+     * analyses the result
+     */
     void analyse(){
         calculateHeterogenity();
         System.out.println("\nmachine heterogeneity = "+machine_heterogeneity);
@@ -39,6 +63,9 @@ public class ETCMatrixGenerator {
         System.out.println("average = "+avg_ETC);
     }
 
+    /**
+     * generates the ETC matrix
+     */
     void generate(){
         if(task_var>=machine_var){
             calculateMatrix1();
@@ -47,6 +74,9 @@ public class ETCMatrixGenerator {
         }
     }
 
+    /**
+     * calculates the heterogenity for analysis of ETC matric
+     */
     void calculateHeterogenity(){
         machine_heterogeneity=0;
         double mean,var,temp,t1;
@@ -97,6 +127,9 @@ public class ETCMatrixGenerator {
         task_heterogeneity/=num_of_machines;
     }
 
+    /**
+     * calculates the ETC if task_var > machine_var
+     */
     void calculateMatrix1(){
         calculateParameters();
         double s,beta_machine;
@@ -113,6 +146,9 @@ public class ETCMatrixGenerator {
         }
     }
 
+    /**
+     * calculates the ETC if task_var < machine_var
+     */
     void calculateMatrix2(){
         calculateParameters();
         double p;

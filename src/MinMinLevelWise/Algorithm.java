@@ -1,9 +1,14 @@
-package CPOP;
+package MinMinLevelWise;
 
 
 import DAG.TaskGraph;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+
+/**
+ * @author ashwani kumar dwivedi
+ */
 
 public class Algorithm {
     TaskGraph data;
@@ -40,6 +45,8 @@ public class Algorithm {
         return max;
     }
 
+    public double resource_utilization;
+
     public void calculate_load_balance(){
         load_balance = 0;
         double comp[] = new double[data.num_of_processors];
@@ -52,6 +59,7 @@ public class Algorithm {
             avg+=comp[i];
         }
         avg = avg/comp.length;
+        resource_utilization = avg/schedulelength();
 
         for(int i=0;i<comp.length;i++){
             load_balance+=Math.pow(avg-comp[i],2);
@@ -165,3 +173,4 @@ public class Algorithm {
         }
     }
 }
+

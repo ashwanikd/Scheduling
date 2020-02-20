@@ -1,5 +1,5 @@
 import DAG.TaskGraph;
-import SufferageAlgorithm.Algorithm;
+import HEFT.Algorithm;
 
 import java.io.File;
 
