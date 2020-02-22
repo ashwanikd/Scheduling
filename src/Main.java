@@ -1,5 +1,5 @@
 import DAG.TaskGraph;
-import levelDivision2.Algorithm;
+import MaxRatio1.Algorithm;
 
 import java.io.File;
 import java.util.Scanner;
@@ -148,11 +148,11 @@ public class Main {
     }
 
     static void printData(File file,TaskGraph graph,Algorithm SA){
-        //System.out.println("===========================================================================================");
-        //System.out.println("Data Set : "+ file.getName());
-        //System.out.println("Number of tasks : "+graph.num_of_tasks);
-        //System.out.println("Number of processors : "+graph.num_of_processors);
-        //System.out.println("Schedule length : "+SA.schedulelength());
+        System.out.println("===========================================================================================");
+        System.out.println("Data Set : "+ file.getName());
+        System.out.println("Number of tasks : "+graph.num_of_tasks);
+        System.out.println("Number of processors : "+graph.num_of_processors);
+        System.out.println("Schedule length : "+SA.schedulelength());
         System.out.println(SA.schedulelength());
     }
 }
