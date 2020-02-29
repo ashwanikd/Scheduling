@@ -13,11 +13,20 @@ public class Main {
         SA.schedule();
         printData(file,graph,SA);
 
+
+
         file = new File("Data Sets/test.txt");
         graph = new TaskGraph(file,true);
         SA = new Algorithm(graph);
         SA.schedule();
         printData(file,graph,SA);
+
+        file = new File("Data Sets/peft.txt");
+        graph = new TaskGraph(file,true);
+        SA = new Algorithm(graph);
+        SA.schedule();
+        printData(file,graph,SA);
+
 
         file = new File("Data Sets/8t3.txt");
         graph = new TaskGraph(file,true);

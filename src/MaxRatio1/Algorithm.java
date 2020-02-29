@@ -108,8 +108,8 @@ public class Algorithm {
                         t = (int)it.next();
                         for(int i=0;i<data.num_of_processors;i++) {
                             if(cmax[t]>0) {
-                                if (c[t][i] * cmax[t] / tmax[t] < min) {
-                                    min = c[t][i] * cmax[t] / tmax[t];
+                                if (c[t][i] * tmax[t] / cmax[t] < min) {
+                                    min = c[t][i] * tmax[t] / cmax[t];
                                     proc_of_task = i;
                                     task = t;
                                 }
